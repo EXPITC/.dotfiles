@@ -1,0 +1,18 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: expitc-dev:latest
+    container_name: dev
+    stdin_open: true
+    tty: true
+    volumes:
+      - ~:/root
+      - /run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock
+
+    environment:
+      TERM: xterm-256color
+      COLORTERM: truecolor
+      SSH_AUTH_SOCK: /run/host-services/ssh-auth.sock
+      EDITOR: nvim

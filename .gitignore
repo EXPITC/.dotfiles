@@ -1,0 +1,33 @@
+# macOS-only
+karabiner/
+iterm2/
+
+# Credentials & secrets
+gcloud/
+gh/
+stripe/
+configstore/
+
+# Tool state / generated
+simple-update-notifier/
+dotfiles/
+
+# Fish runtime files
+fish/fishd.tmp.*
+fish/backup/
+fish/fish_variables
+fish/functions/fish_prompt.*.copy
+fish/themes/
+
+# Neovim cache
+nvim/.php-cs-fixer.cache
+nvim/data/
+nvim/undo/
+
+# General
+*.log
+*.local
+.last_*
+access_tokens*
+credentials*
+*.db

@@ -1,0 +1,13 @@
+gcloud/
+gh/
+karabiner/
+iterm2/
+stripe/
+configstore/
+dotfiles/
+simple-update-notifier/
+**/*.db
+**/*.local
+**/.last_*
+**/access_tokens*
+**/credentials*
