@@ -14,6 +14,7 @@ return {
         "css-lsp",
         "phpcs",
         "php-cs-fixer",
+        "eslint_d",
       })
     end,
   },

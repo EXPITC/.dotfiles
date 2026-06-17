@@ -96,19 +96,30 @@ require("lazy").setup({
     {
       "stevearc/conform.nvim",
       optional = true,
-      -- ft = "php", -- Load only for PHP files
       opts = {
         formatters_by_ft = {
           php = { "php_cs_fixer" },
+          javascript = { "eslint_d" },
+          typescript = { "eslint_d" },
+          javascriptreact = { "eslint_d" },
+          typescriptreact = { "eslint_d" },
         },
-        -- format_on_save = {
-        --     lsp_fallback = true,
-        --     async = false,
-        --     timeout_ms = 1000,
-        -- },
         notify_on_error = true,
         formatters = {
-          ["php-cs-fixer"] = {
+          eslint_d = {
+            condition = function(self, ctx)
+              -- use project config if found, otherwise walk up to home dir config
+              return vim.fs.find(
+                { ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", ".eslintrc.yaml", ".eslintrc.yml", "eslint.config.js", "eslint.config.mjs" },
+                { path = ctx.filename, upward = true }
+              )[1] ~= nil
+                or vim.fs.find(
+                  { ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", ".eslintrc.yaml", ".eslintrc.yml" },
+                  { path = vim.fn.expand("~"), upward = false }
+                )[1] ~= nil
+            end,
+          },
+          ["php_cs_fixer"] = {
             command = "php-cs-fixer",
             args = {
               "fix",
